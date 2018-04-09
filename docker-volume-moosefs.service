@@ -1,0 +1,9 @@
+[Unit]
+Description=Docker Volume Plugin for MooseFS
+Documentation=https://github.com/moosefs/docker-volume-moosefs
+
+[Service]
+ExecStart=/usr/bin/docker-volume-moosefs
+
+[Install]
+WantedBy=multi-user.target
