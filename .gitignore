@@ -1,0 +1,7 @@
+*~
+docker-volume-moosefs
+*.rpm
+*.deb
+obj
+.idea
+vendor/*/
