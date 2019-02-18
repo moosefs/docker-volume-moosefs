@@ -4,6 +4,11 @@ Plugin for MooseFS to create persistent volumes in Docker containers.
 
 <img align="right" alt="MooseFS logo" src="https://moosefs.com/Content/Images/moosefs.png" />
 
+## Version history:
+
+- 0.2.0 Creates new subdirectory for each volume in root e.g. /mnt/moosefs
+- 0.1.0 Mountpoint /mnt/moosefs is used as the volume
+
 ## Preconditions
 
 - **MooseFS** Storage Cluster has to be setup and running
@@ -69,10 +74,12 @@ make rpm
 Assuming we have **MooseFS** mounted in `/mnt/moosefs` we will create a volume labeled `mymoosefs`:
 
 ```
-docker volume create -d moosefs --name mymoosefs -o mountpoint=/mnt/moosefs
+docker volume create -d moosefs --name mymoosefs -o root=/mnt/moosefs
 ```
 
-Without specified mountpoint plugin will assume mounting in `/mnt/$NAME`, so **mymoosefs** should be mounted in `/mnt/myfs` to use short command `docker volume create -d moosefs --name mymoosefs`
+Without specified mountpoint plugin will assume mounting in `/mnt/moosefs/$NAME`, so **mymoosefs** will be mounted in `/mnt/moosefs/mymoosefs`
+
+We can use shorter command: `docker volume create -d moosefs --name mymoosefs`
 
 We can inspect created volume with following command:
 

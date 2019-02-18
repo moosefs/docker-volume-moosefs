@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	mountpoint = flag.String("mountpoint", "/mnt/", "Host's base directory where volumes are created")
+	root = flag.String("root", "/mnt/moosefs", "Host's base directory where volumes are created")
 	verbose    = flag.Bool("verbose", false, "Enable verbose logging")
 )
 
@@ -29,7 +29,7 @@ func main() {
 	u, _ := user.Lookup("root")
 	gid, _ := strconv.Atoi(u.Gid)
 
-	d := newMooseFSDriver(*mountpoint)
+	d := newMooseFSDriver(*root)
 	h := volume.NewHandler(d)
 	fmt.Println(h.ServeUnix("moosefs", gid))
 }

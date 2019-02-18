@@ -1,6 +1,6 @@
 all: deps compile
 
-VERSION=0.1.0
+VERSION=0.2.0
 
 compile:
 	go build
@@ -38,7 +38,7 @@ deb: compile
 	install -m 0644 docker-volume-moosefs.service obj/debian/lib/systemd/system
 	fpm -C obj/debian --vendor MooseFS -m "contact@moosefs.com" -f \
 			-s dir -t deb -n docker-volume-moosefs \
-			--after-install files/post-install-systemd --version ${VERSION} . && \
+			--version ${VERSION} . && \
 			rm -fr obj/debian
 
 clean:
