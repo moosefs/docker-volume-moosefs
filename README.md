@@ -87,7 +87,7 @@ We can inspect created volume with following command:
 docker volume inspect mymoosefs
 ```
 
-Now we can use our `mymoosefs` **MooseFS Volume** in example container such as Nginx. Following commang will mount our storage to `/usr/share/nginx/html` directory, where nginx stores html files. We are forwarding port 80 from container to [http://localhost:10080](http://localhost:10080). This command will start Nginx in container:
+Now we can use our `mymoosefs` **MooseFS Volume** in example container such as Nginx. Following command will mount our storage to `/usr/share/nginx/html` directory, where nginx stores html files. We are forwarding port 80 from container to [http://localhost:10080](http://localhost:10080). This command will start Nginx in container:
 
 ```
 docker run -ti -v mymoosefs:/usr/share/nginx/html -p 10080:80 nginx:latest bash -c "service nginx start; bash"
